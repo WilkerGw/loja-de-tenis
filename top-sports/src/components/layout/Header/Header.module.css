@@ -1,0 +1,50 @@
+/* Substitua o conteúdo inteiro do arquivo para acomodar o novo layout */
+
+.header {
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  top: 0;
+  z-index: 100;
+  position: fixed;
+}
+
+.logo a {
+
+}
+
+.logoHeader{
+  width: 3rem;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cartIcon {
+  position: relative;
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: #333;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: #ff4d4f;
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}

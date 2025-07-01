@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sportstore-web
+    ports:
+      - "3000:3000"
+    volumes:
+      # Monta o código-fonte no contêiner para desenvolvimento com hot-reload
+      # Em produção, este volume deve ser removido
+      - ./src:/app/src
+    environment:
+      # Variáveis de ambiente podem ser definidas aqui ou em um arquivo .env
+      - NODE_ENV=development

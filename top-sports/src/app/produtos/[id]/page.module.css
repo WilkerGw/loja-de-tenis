@@ -1,0 +1,9 @@
+/* src/app/produtos/[id]/page.module.css */
+
+.pageContainer {
+  /* Adiciona um espaçamento de 32px no topo e na base da página */
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin: 0;
+  padding: 0;
+}
