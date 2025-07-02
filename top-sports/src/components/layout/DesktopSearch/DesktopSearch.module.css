@@ -1,0 +1,61 @@
+/* src/components/layout/DesktopSearch/DesktopSearch.module.css */
+.searchContainer {
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1002; /* Acima de outros elementos */
+  display: none; /* Escondido por padrão, aparece no desktop */
+  align-items: center;
+  justify-content: flex-end; /* Alinha tudo à direita */
+}
+
+@media (min-width: 993px) {
+  .searchContainer {
+    display: flex;
+  }
+}
+
+.searchButton {
+  background-color: rgba(94, 94, 94, 0.7);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+  transition: background-color 0.2s;
+  z-index: 2; /* Garante que o botão fique acima do input */
+}
+
+.searchButton:hover {
+  background-color: rgba(0, 123, 255, 0.7);
+}
+
+.searchInput {
+  height: 50px;
+  border: none;
+  background-color: #333;
+  color: #fff;
+  padding: 0 1rem;
+  padding-right: 55px; /* Espaço para não escrever por baixo do botão */
+  border-radius: 25px;
+  font-size: 1rem;
+  outline: none;
+  
+  /* Lógica da animação */
+  width: 0;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.4s ease-in-out;
+  position: absolute;
+  right: 0;
+}
+
+.searchContainer.open .searchInput {
+  width: 300px;
+  opacity: 1;
+  transform: translateX(0);
+}

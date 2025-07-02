@@ -2,30 +2,51 @@
 
 .hero {
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #5e5e5e;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: linear-gradient(to right, #eeeeee, #5e5e5e);
+  overflow: hidden; /* Previne que qualquer barra de rolagem apareça */
 }
 
 .heroContent {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Organiza os itens em coluna no mobile */
   justify-content: center;
   align-items: center;
   padding: 0 1rem;
   animation: fadeIn 1s ease-in-out;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
 }
+
+/* === ESTILOS PARA MOBILE === */
+
+.heroImgContainer {
+  width: 90%;
+  margin-bottom: 2rem;
+}
+
+.heroImg {
+  width: 100%;
+  height: auto;
+}
+
+.heroInfosContainer {
+  width: 100%;
+}
+
+.logoHero {
+  width: 70%;
+  max-width: 12rem;
+  height: auto;
+}
+
+/* ==================================== */
 
 .title {
   font-size: 2.5rem;
@@ -52,15 +73,16 @@
   font-weight: bold;
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .ctaButton:hover {
-  background-color: #0056b3; /* Um azul mais escuro no hover */
-  transform: translateY(-2px); /* Efeito de elevação sutil */
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
-/* Keyframes para a animação de entrada */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -72,20 +94,18 @@
   }
 }
 
-/* Ajustes de responsividade para telas maiores */
+/* === ESTILOS PARA DESKTOP === */
 @media (min-width: 768px) {
-  .hero {
-    background-image:
-    url(https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
-    
+  .heroContent {
+    flex-direction: row;
   }
-
+  
   .title {
-    font-size: 4rem; /* Aumenta o título */
+    font-size: 4rem;
   }
 
   .subtitle {
-    font-size: 1.5rem; /* Aumenta o subtítulo */
+    font-size: 1.5rem;
   }
 
   .ctaButton {
@@ -94,6 +114,30 @@
   }
 
   .logoHero {
-    width: 20rem;
+    width: 15rem;
+    max-width: none;
+  }
+
+  .heroImgContainer {
+    width: 50rem;
+    position: absolute;
+    right: 5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 1rem;
+    margin-bottom: 0;
+  }
+
+  .heroImg {
+    width: 100%;
+  }
+
+  .heroInfosContainer {
+    z-index: 1;
+    position: absolute;
+    left: 10rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
   }
 }

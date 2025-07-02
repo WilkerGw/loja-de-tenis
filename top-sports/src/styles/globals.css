@@ -1,11 +1,28 @@
+/* src/styles/globals.css */
+
+:root {
+  --nav-width: 200px;
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body{
-  overflow-x: hidden;
+body {
   font-family: sans-serif;
+  background-color: #f9f9f9;
+  overflow-x: hidden;
 }
 
+.mainContent {
+  transition: margin-left 0.3s ease-in-out;
+}
+
+/* Esta media query foi removida intencionalmente para o menu de hover */
+/* @media (min-width: 993px) {
+  .mainContent {
+    margin-left: var(--nav-width);
+  }
+} */

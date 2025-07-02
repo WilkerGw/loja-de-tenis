@@ -1,42 +1,174 @@
-/* Substitua o conteúdo inteiro do arquivo para acomodar o novo layout */
+/* src/components/layout/Header/Header.module.css */
 
+/* --- Controlos Flutuantes para MOBILE --- */
+.mobileControls {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: none; /* Escondido por padrão, ativado via media query */
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1001;
+  pointer-events: none;
+}
+.mobileButton {
+  background-color: rgba(94, 94, 94, 0.7);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #fff;
+  pointer-events: all;
+  transition: background-color 0.2s;
+}
+.mobileButton:hover {
+  background-color: rgba(0, 123, 255, 0.7);
+}
+.hamburgerIcon span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #ffffff;
+  margin: 2px 0;
+  transition: all 0.3s ease-in-out;
+}
+.hamburgerIcon.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.hamburgerIcon.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburgerIcon.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* --- Container Principal do Menu (para ambos os modos) --- */
+.navContainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  z-index: 999;
+}
+
+/* --- Menu que Desliza --- */
 .header {
-  width: 100%;
-  padding: 1rem 2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: var(--nav-width);
+  color: #eeeeee;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s ease-in-out;
+  background-color: rgba(16, 16, 16, 0.7);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(238, 238, 238, 0.1);
+  transform: translateX(-100%);
+}
+
+/* Lógica para abrir o menu com clique no mobile */
+.navContainer.open .header {
+  transform: translateX(0);
+}
+
+
+/* --- Lógica para DESKTOP (ecrãs > 992px) --- */
+@media (min-width: 993px) {
+  /* Esconde os controlos do mobile */
+  .mobileControls {
+    display: none;
+  }
+  
+  /* Gatilho de hover lateral */
+  .navContainer::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 100px;
+    background-color: #5e5e5e;
+    border-radius: 0 10px 10px 0;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .navContainer:hover::before {
+    background-color: #007bff;
+  }
+
+  /* Faz o menu abrir com o hover no container */
+  .navContainer:hover .header {
+    transform: translateX(0);
+  }
+
+  /* Esconde a busca de DENTRO do menu no desktop também */
+  .searchContainer {
+    display: none;
+  }
+}
+
+
+/* --- Lógica para MOBILE (ecrãs < 992px) --- */
+@media (max-width: 992px) {
+  /* Mostra os controlos do mobile */
+  .mobileControls {
+    display: flex;
+  }
+  
+  /* Esconde a busca de DENTRO do menu no mobile */
+  .searchContainer {
+    display: none;
+  }
+}
+
+
+/* --- Estilos Internos do Menu (comuns a ambos) --- */
+.logo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.logoHeader {
+  width: 5rem;
+  height: auto;
+}
+.cartContainer {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(238, 238, 238, 0.1);
+}
+.cartLink {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: transparent;
-  top: 0;
-  z-index: 100;
-  position: fixed;
+  padding: 1rem;
+  text-decoration: none;
+  color: #eeeeee;
+  background-color: #202020;
+  border-radius: 5px;
+  transition: background-color 0.2s ease;
+  font-weight: bold;
 }
-
-.logo a {
-
+.cartLink:hover {
+  background-color: #007bff;
 }
-
-.logoHeader{
-  width: 3rem;
-}
-
-.controls {
+.cartLinkContent {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
 }
-
-.cartIcon {
-  position: relative;
-  font-size: 1.8rem;
-  text-decoration: none;
-  color: #333;
-}
-
 .cartBadge {
-  position: absolute;
-  top: -5px;
-  right: -10px;
   background-color: #ff4d4f;
   color: white;
   border-radius: 50%;
@@ -47,4 +179,10 @@
   align-items: center;
   font-size: 0.8rem;
   font-weight: bold;
+}
+.footerNav {
+  padding-top: 1rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #888;
 }

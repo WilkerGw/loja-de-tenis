@@ -30,14 +30,13 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <div className={styles.priceContainer}>
           {product.salePrice ? (
             <>
-              <span className={styles.originalPrice}>R$ {product.price.toFixed(2)}</span>
-              <span className={styles.salePrice}>R$ {product.salePrice.toFixed(2)}</span>
+              <span className={styles.originalPrice}>€{product.price.toFixed(2)}</span>
+              <span className={styles.salePrice}>€{product.salePrice.toFixed(2)}</span>
             </>
           ) : (
-            <span className={styles.price}>R$ {product.price.toFixed(2)}</span>
+            <span className={styles.price}>€{product.price.toFixed(2)}</span>
           )}
         </div>
-        <button className={styles.addButton}>Adicionar ao Carrinho</button>
       </div>
     </div>
   );

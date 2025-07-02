@@ -1,0 +1,55 @@
+/* src/components/products/ProductList/ProductList.module.css */
+
+.section {
+  padding: 2rem 1rem 4rem;
+  background-color: #f9f9f9;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #333;
+  text-align: center;
+  margin-top: 8rem; /* Espaço para o header fixo */
+  margin-bottom: 3rem;
+  text-transform: capitalize;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.noProducts {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  padding: 4rem 0;
+}
+
+/* Tablet: 2 colunas */
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop pequeno: 3 colunas */
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Desktop grande: 4 colunas */
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -4,25 +4,21 @@
 import { createContext, useState, useContext, ReactNode, useMemo } from 'react';
 import { Product } from '../types/product';
 
-// Define o formato de um item dentro do carrinho (produto + quantidade)
 interface CartItem extends Product {
   quantity: number;
 }
 
-// Define o que nosso contexto irá fornecer
 interface CartContextType {
   cartItems: CartItem[];
   addToCart: (product: Product, quantity: number) => void;
   removeFromCart: (productId: string) => void;
   updateQuantity: (productId: string, newQuantity: number) => void;
   cartCount: number;
-  cartTotal: number; // NOVO: O valor total do carrinho
+  cartTotal: number;
 }
 
-// Cria o Contexto com um valor padrão (null)
 const CartContext = createContext<CartContextType | null>(null);
 
-// Cria o Provedor (Provider) do Contexto
 interface CartProviderProps {
   children: ReactNode;
 }
@@ -63,11 +59,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
   const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
 
-  // NOVO: Calcula o valor total do carrinho
-  // Usamos useMemo para otimização, recalculando apenas quando o cartItems muda.
   const cartTotal = useMemo(() => {
     return cartItems.reduce((total, item) => {
-      const itemPrice = item.salePrice ?? item.price; // Usa o preço de oferta se existir
+      const itemPrice = item.salePrice ?? item.price;
       return total + itemPrice * item.quantity;
     }, 0);
   }, [cartItems]);
@@ -81,7 +75,6 @@ export const CartProvider = ({ children }: CartProviderProps) => {
   );
 };
 
-// Hook customizado para facilitar o uso do contexto
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {

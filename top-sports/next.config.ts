@@ -1,15 +1,21 @@
-// next.config.mjs
+// next.config.ts
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Adicione esta seção de 'images'
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'picsum.photos',
-        port: '',
-        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      // ADICIONE ESTE NOVO BLOCO
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
       },
     ],
   },
