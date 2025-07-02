@@ -1,38 +1,37 @@
-// src/app/layout.tsx
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { Header } from '../components/layout/Header/Header';
-import { Footer } from '../components/layout/Footer/Footer';
-import { CartProvider } from '../contexts/CartContext';
-import { PageWrapper } from '../components/layout/PageWrapper/PageWrapper'; // 1. Importe o Wrapper
+import { CartProvider } from "../contexts/CartContext";
+import { PageWrapper } from "../components/layout/PageWrapper/PageWrapper";
+import { Footer } from "../components/layout/Footer/Footer";
+import { Navigation } from "../components/layout/Navigation/Navigation";
 import '../styles/globals.css';
+import { Header } from "src/components/layout/Header/Header";
 
-const inter = Inter({ subsets: ['latin'] });
-
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Top Sports',
-  description: 'Sua loja de artigos esportivos online',
+  description: 'Sua loja de artigos esportivos',
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>
+      <body>
         <CartProvider>
-          <Header />
-          <main className="mainContent">
-            {/* 2. Envolva o {children} com o PageWrapper */}
+          <Header/>
+          <main>
             <PageWrapper>
               {children}
             </PageWrapper>
           </main>
           <Footer />
         </CartProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

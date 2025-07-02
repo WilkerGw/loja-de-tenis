@@ -1,28 +1,50 @@
-/* src/styles/globals.css */
+/* Adicione esta linha no topo para importar as fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@700&family=Roboto+Flex&display=swap');
 
 :root {
-  --nav-width: 200px;
+  --max-width: 1400px;
+  --border-radius: 12px;
+
+  /* Defina as variáveis das fontes aqui */
+  --font-roboto: 'Roboto Flex', sans-serif;
+  --font-bai-jamjuree: 'Bai Jamjuree', sans-serif;
+
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --background-color: #ffffff;
+  --text-color: #212529;
+  --text-color-light: #f8f9fa;
+  --border-color: #dee2e6;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
 }
 
 * {
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 }
 
+html,
 body {
-  font-family: sans-serif;
-  background-color: #f9f9f9;
+  max-width: 100vw;
   overflow-x: hidden;
 }
 
-.mainContent {
-  transition: margin-left 0.3s ease-in-out;
+body {
+  color: var(--text-color);
+  background: var(--background-color);
+  /* Aplique a fonte padrão ao corpo do site */
+  font-family: var(--font-roboto);
 }
 
-/* Esta media query foi removida intencionalmente para o menu de hover */
-/* @media (min-width: 993px) {
-  .mainContent {
-    margin-left: var(--nav-width);
-  }
-} */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Você pode usar a outra fonte para títulos, por exemplo */
+h1, h2, h3 {
+    font-family: var(--font-bai-jamjuree);
+}
