@@ -157,13 +157,24 @@
   transition: background-color 0.3s ease;
 }
 
+@media (min-width: 600px) {
+  .ctaButton {
+    width: 40%;
+    margin: 1rem auto;
+    gap: 1rem;
+  }
+}
+
 .ctaButton:hover {
   background-color: #218838;
 }
 
 .emptyCart {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   padding: 4rem 1rem;
+  min-height: 100vh;
 }
 
 .emptyCart h2 {

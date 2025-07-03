@@ -1,3 +1,4 @@
+// src/components/layout/DesktopSearch/DesktopSearch.tsx
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -44,7 +45,7 @@ export const DesktopSearch = () => {
                     onChange={(e) => setQuery(e.target.value)}
                     className={styles.searchInput}
                     placeholder="Procurar..."
-                    onFocus={() => setIsOpen(true)}
+                    // onFocus={() => setIsOpen(true)} - REMOVIDO PARA PRIORIZAR O HOVER
                 />
             </form>
             <button

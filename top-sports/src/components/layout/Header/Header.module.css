@@ -1,3 +1,5 @@
+/* src/components/layout/Header/Header.module.css */
+
 /* --- Controlos Flutuantes --- */
 .floatingControls {
     position: fixed;
@@ -8,40 +10,51 @@
     justify-content: space-between;
     align-items: center;
     z-index: 1001;
-    pointer-events: none;
+    pointer-events: none; /* Permite cliques nos elementos filhos */
 }
 
 .desktopSearchWrapper {
     pointer-events: all;
-    display: none;
+    display: none; /* Por padrão, oculto no mobile */
 }
 
+/* Estilo base para o botão mobile */
 .mobileButton {
-    background-color: rgba(94, 94, 94, 0.7);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: transparent; /* Fundo transparente por padrão */
+    border: none;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Para alinhar o ícone de hambúrguer */
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: #fff;
+    color: #5e5e5e; /* Cor do ícone padrão, se houver um */
     pointer-events: all;
-    transition: background-color 0.2s;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+
+/* Estilo do botão mobile quando o menu está ABERTO (com a classe 'open') */
+.mobileButton.open {
+    background-color: rgba(16, 16, 16, 0.7); /* Fundo escuro sutil quando aberto */
+    backdrop-filter: blur(5px); /* Efeito de desfoque */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+    color: #ffffff; /* Garante que o "X" seja branco */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .mobileButton:hover {
-    background-color: rgba(0, 123, 255, 0.7);
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .hamburgerIcon span {
     display: block;
     width: 22px;
     height: 2px;
-    background-color: #ffffff;
+    background-color: #ffffff; /* As linhas do hambúrguer são brancas */
     margin: 2px 0;
     transition: all 0.3s ease-in-out;
 }
@@ -81,7 +94,7 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.4s ease-in-out;
-    background-color: rgba(16, 16, 16, 0.7);
+    background-color: transparent;
     backdrop-filter: blur(10px);
     border-right: 1px solid rgba(238, 238, 238, 0.1);
     transform: translateX(-100%);
@@ -107,11 +120,13 @@
 
 /* --- Lógica para DESKTOP (ecrãs > 992px) --- */
 @media (min-width: 993px) {
-    .mobileButton {
+    .mobileButton,
+    .mobileSearchButton, /* Oculta no desktop */
+    .mobileCartButton { /* Oculta no desktop */
         display: none;
     }
     .desktopSearchWrapper {
-        display: block;
+        display: block; /* Mostra o search wrapper no desktop */
     }
     .navContainer::before {
         content: '';
@@ -135,13 +150,40 @@
 /* --- Lógica para MOBILE (ecrãs < 992px) --- */
 @media (max-width: 992px) {
     .mobileButton {
-        display: flex;
+        display: flex; /* Mostra o botão mobile no mobile */
     }
     .desktopSearchWrapper {
-        display: none;
+        display: none; /* Oculta o search wrapper no mobile */
     }
     .overlay {
         display: block;
+        display: flex;
+    }
+
+    /* Estilos para botões de busca e carrinho no mobile */
+    .mobileSearchButton,
+    .mobileCartButton {
+        display: flex; /* Mostra no mobile */
+        background-color: transparent;
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        color: #5e5e5e;
+        transition: all 0.2s;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+    .mobileSearchButton:hover,
+    .mobileCartButton:hover {
+        background-color: rgba(0, 123, 255, 0.1);
+        color: #007bff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .mobileCartButton {
+        position: relative; /* Para o badge do carrinho */
     }
 }
 
@@ -166,7 +208,7 @@
     padding: 1rem;
     text-decoration: none;
     color: #eeeeee;
-    background-color: #202020;
+    background-color: #5e5e5e;
     border-radius: 5px;
     transition: background-color 0.2s ease;
     font-weight: bold;
